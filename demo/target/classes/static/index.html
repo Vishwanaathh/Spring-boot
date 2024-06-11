@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <form onsubmit="login(event)">
+    <input type="text" id="val"/>
+    
+    <input type="submit"/>
+    </form>
+    
+</body>
+<script>
+    function login(event){
+        event.preventDefault();
+        val=document.getElementById("val").value;
+        fetch('http://localhost:8080/Users').then(response=>response.json()).then(data=>{
+            console.log(data);
+            if(val===data[0].name){
+                window.location.href = 'http://localhost:8080/Main.html';
+        }
+        else{
+            console.log("Wrong!");
+        }
+
+        });
+ 
+    }
+</script>
+</html>
